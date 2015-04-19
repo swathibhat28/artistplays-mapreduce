@@ -22,4 +22,4 @@ The input records have time in Unix timestamp. Convert to YYYY-MM-DD format
 In the Mapper phase, for each Artist/Band as key, output date(YYYY-MM-DD) and number of plays
 
 #### Reducer Phase
-In the Combiner phase, for each date(YYYY-MM-DD) and Artist/Band, sum up the number of plays values. Output the Artist/Band, Date tuple as key and the sum as value
+In the Reducer phase, for each date(YYYY-MM-DD) and Artist/Band, sum up the number of plays values. Output the Artist/Band as key and the date and sum as value
