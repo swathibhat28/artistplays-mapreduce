@@ -19,7 +19,7 @@ Use a list of stop words to filter out those most-frequent tokens. Anything on t
 The input records have time in Unix timestamp. Convert to YYYY-MM-DD format
 
 #### Mapper Phase
-In the Mapper phase, Mapper takes records one by one and performs the pre-processing. For each record outputs <Artist/Band, output date(YYYY-MM-DD)> as key and number of plays as value
+In the Mapper phase, Mapper takes records one by one and performs the pre-processing. For each record outputs Artist/Band, output date(YYYY-MM-DD) tuple as key and number of plays as value
 
 #### Reducer Phase
-In the Reducer phase, for <Artist/Band, output date(YYYY-MM-DD)> sum up the count of number of plays. Using the tuple of  <Artist/Band, output date(YYYY-MM-DD)> as key ensures that all Artist/Band for a day goes to the same reducer.
+In the Reducer phase, for Artist/Band, output date(YYYY-MM-DD) tuple sum up the count of number of plays. Using the tuple of  Artist/Band, output date(YYYY-MM-DD) as key ensures that all Artist/Band for a day goes to the same reducer.
