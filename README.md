@@ -13,13 +13,46 @@ Replace everything from the Artist/Band name that is not a word character - [A-Z
 ##### Stop words
 For this type of analyses, we want to focus on words that carry meaning: names, nouns, and verbs. Words like the, of, and occur more than any other words in English.
 
-Use a list of stop words to filter out those most-frequent tokens. Anything on the list is removed from the stream of input Artist/Band names before any further processing is done.
+Use a list of stop words to filter out those most-frequent tokens. Anything on the list is removed from the stream of input Artist/Band names before further processing.The list is currently maintained in the code but can be read as a cache file from the command line.
 
 ##### Time conversion
 The input records have time in Unix timestamp. Convert to YYYY-MM-DD format
 
 #### Mapper Phase
-In the Mapper phase, Mapper takes records one by one and performs the pre-processing. For each record outputs Artist/Band, output date(YYYY-MM-DD) tuple as key and number of plays as value
+In the Mapper phase, Mapper takes records one by one:
+1. Normalize Artist/Band name 
+2. Convert output date to YYYY-MM-DD format
+3. Mapper output - Key: Artist Tuple(artist name,date), Value: number of plays per artist 
 
 #### Reducer Phase
-In the Reducer phase, for Artist/Band, output date(YYYY-MM-DD) tuple sum up the count of number of plays. Using the tuple of  Artist/Band, output date(YYYY-MM-DD) as key ensures that all Artist/Band for a day goes to the same reducer.
+In the Reducer phase:
+1. For each Artist/Band tuple (Artist name,output date(YYYY-MM-DD)) sum up the count of number of plays. 
+2. Using the tuple of  Artist/Band, output date(YYYY-MM-DD) as key ensures that all Artist/Band for a day goes to the same reducer.
+3. Reducer output - Key: Text(Artist name, Date), Value: Number of plays per artist per day
+
+#### Instructions
+git clone git@github.com:swathibhat28/artistplays-mapreduce.git
+Import as Eclipse Java Project
+Go to Project Properties window and in "Java Build Path" section, click on "Add External Jars"
+In the JAR Selection dialog, select the following jars from the extracted Hadoop tar.gz file.
+a. share/hadoop/common/hadoop-common-*.jar
+b. share/hadoop/mapreduce/hadoop-mapreduce-client-core-*.jar
+c. share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-*.jar
+
+Additional jars required are:
+a. org-apache-commons-logging.jar
+b. google-collections-0.9.jar
+c. org.apache.common.collections.jar
+d. commons-cli-2.0.jar
+e. com.google.guava_1.6.0 2.jar
+
+#### Execution
+hadoop jar ArtistPlaysMapreduce.jar <input> <output> -artistNames <artistNamesFile>
+
+All the fields above are required.
+
+#### Assumptions
+1. Assuming 1 reducer which is the default. This can be configured when required as an optional parameter. Suggested number is 1 reducer for 1K records
+2. Stop words can be dropped - using a stop word list to filter out irrelevant words from artist names
+3. Normalization applied only through A-Za-z0-9. 
+4. Looking for exact matches with Artist names not performing any confidence matches with this version
