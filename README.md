@@ -31,22 +31,29 @@ In the Reducer phase:
 3. Reducer output - Key: Text(Artist name, Date), Value: Number of plays per artist per day
 
 #### Instructions
+
 git clone git@github.com:swathibhat28/artistplays-mapreduce.git
+
 Import as Eclipse Java Project
+
 Go to Project Properties window and in "Java Build Path" section, click on "Add External Jars"
+
 In the JAR Selection dialog, select the following jars from the extracted Hadoop tar.gz file.
+
 a. share/hadoop/common/hadoop-common-*.jar
 b. share/hadoop/mapreduce/hadoop-mapreduce-client-core-*.jar
 c. share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-*.jar
 
 Additional jars required are:
-a. org-apache-commons-logging.jar
-b. google-collections-0.9.jar
-c. org.apache.common.collections.jar
-d. commons-cli-2.0.jar
-e. com.google.guava_1.6.0 2.jar
+
+1. org-apache-commons-logging.jar
+2. google-collections-0.9.jar
+3. org.apache.common.collections.jar
+4. commons-cli-2.0.jar
+5. com.google.guava_1.6.0 2.jar
 
 #### Execution
+
 hadoop jar ArtistPlaysMapreduce.jar <input> <output> -artistNames <artistNamesFile>
 
 All the fields above are required.
