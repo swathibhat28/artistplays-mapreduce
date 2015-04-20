@@ -40,9 +40,9 @@ Go to Project Properties window and in "Java Build Path" section, click on "Add 
 
 In the JAR Selection dialog, select the following jars from the extracted Hadoop tar.gz file.
 
-a. share/hadoop/common/hadoop-common-*.jar
-b. share/hadoop/mapreduce/hadoop-mapreduce-client-core-*.jar
-c. share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-*.jar
+1. share/hadoop/common/hadoop-common-*.jar
+2. share/hadoop/mapreduce/hadoop-mapreduce-client-core-*.jar
+3. share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-*.jar
 
 Additional jars required are:
 
