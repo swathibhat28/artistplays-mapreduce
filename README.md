@@ -54,7 +54,7 @@ Additional jars required are:
 
 #### Execution
 
-hadoop jar ArtistPlaysMapreduce.jar <input> <output> -artistNames <artistNamesFile>
+hadoop jar ArtistPlaysMapreduce.jar \<input\> \<output\> -artistNames \<artistNamesFile\>
 
 All the fields above are required.
 
